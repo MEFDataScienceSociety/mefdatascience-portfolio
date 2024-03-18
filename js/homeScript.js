@@ -1,54 +1,130 @@
 const banner = document.getElementById("banner");
 const anim = document.getElementById("mainAnim");
 const cursorElement = document.getElementById("text-cursor");
+cursorElement.classList.add("animatedCursor");
+
+const bannerFontSize = 50; //manually set this when changing banner font size in css
+
+const typingSpeed = 80;
+const showMS = 2000;
+const hideMS = 1000;
+const swapDelay = 0;
 
 const textArr = [
-  "hello",
-  "sample text",
-  "lorem ipsum dolor sin blah blah blab",
+  "Data Talks Etkinlikleri",
+  "Python & SQL Database Eğitimi",
+  "Excel Eğitimleri",
 ];
+let currentTextIndex = 0;
+let currentText = {
+  text: textArr[0],
+  delay: textArr[0].length * typingSpeed * 2 + showMS + swapDelay,
+};
 
-function typeText(stringsArray, speed) {
+let typingStop = 0;
+let noBannerText = true;
+
+function typeText(stringInput, speed) {
   let currentStringIndex = 0;
   let currentCharIndex = 0;
 
   function type() {
-    if (currentStringIndex < stringsArray.length) {
-      const currentString = stringsArray[currentStringIndex];
-      if (currentCharIndex < currentString.length) {
-        const charSpan = document.createElement("span");
-        charSpan.textContent = currentString.charAt(currentCharIndex);
-        charSpan.classList.add("typing-animation");
-        anim.appendChild(charSpan);
-        currentCharIndex++;
-        updateCursorPosition();
-        setTimeout(type, speed);
-      } else {
-        currentStringIndex++;
-        currentCharIndex = 0;
-        const spaceSpan = document.createElement("span");
-        spaceSpan.textContent = " ";
-        anim.appendChild(spaceSpan);
-        updateCursorPosition();
-        setTimeout(type, speed * 2); // Delay between strings
-      }
+    cursorElement.classList.remove("animatedCursor");
+    const currentString = stringInput;
+    if (currentCharIndex < currentString.length) {
+      const charSpan = document.createElement("span");
+      charSpan.textContent = currentString.charAt(currentCharIndex);
+      charSpan.classList.add("typing-animation");
+      anim.appendChild(charSpan);
+      currentCharIndex++;
+      updateCursorPosition();
+      setTimeout(type, speed);
+    } else {
+      updateCursorPosition();
+      cursorElement.classList.add("animatedCursor");
+      setTimeout(deleteText, showMS, typingSpeed); // Delay between strings
     }
   }
-
+  noBannerText = false;
   type();
 }
 
-function updateCursorPosition() {
-  const lastSpan = anim.lastChild;
-  const rect = lastSpan.getBoundingClientRect();
-  const bannerBox = banner.getBoundingClientRect();
-  cursorElement.style.left =
-    rect.right - bannerBox.left + window.scrollX + "px";
-  cursorElement.style.top = rect.top - bannerBox.top + window.scrollY + "px";
+function deleteText(speed) {
+  var letterNodes = anim.children;
+  var currentIndex = anim.childElementCount - 1;
+  cursorElement.classList.remove("animatedCursor");
+  function deleteOne() {
+    if (anim.hasChildNodes) {
+      const currentLetter = letterNodes[currentIndex];
+      currentLetter.classList.remove("typing-animation");
+      currentLetter.classList.add("delete-animation");
+      if (currentIndex > 0) {
+        currentIndex--;
+        setTimeout(deleteOne, speed);
+        updateCursorPosition();
+      } else {
+        cursorElement.classList.add("animatedCursor");
+        noBannerText = true;
+        swapText();
+      }
+
+      currentLetter.addEventListener(
+        "animationend",
+        () => {
+          anim.removeChild(currentLetter);
+        },
+        false
+      );
+    }
+  }
+  deleteOne();
 }
 
-setTimeout(() => {
-  typeText(textArr, 200);
-}, 1500);
+function swapText() {
+  currentTextIndex++;
+  let circularIndex = currentTextIndex % textArr.length;
+  currentText = {
+    text: textArr[circularIndex],
+    delay: textArr[circularIndex].length * typingSpeed * 2 + showMS + swapDelay,
+  }; //circular indexing
+  updateBannerText();
+}
 
-window.addEventListener("resize", updateCursorPosition);
+function selectUpdate() {
+  if (noBannerText) {
+    resetCursorPosition();
+  } else {
+    updateCursorPosition();
+  }
+}
+
+function updateCursorPosition() {
+  if (anim.hasChildNodes) {
+    const lastSpan = anim.lastChild;
+    const rect = lastSpan.getBoundingClientRect();
+    const bannerBox = banner.getBoundingClientRect();
+    cursorElement.style.left =
+      rect.right - bannerBox.left + window.scrollX + "px";
+    cursorElement.style.top = rect.top - bannerBox.top + window.scrollY + "px";
+  }
+}
+
+function resetCursorPosition() {
+  cursorElement.style.left = "0px";
+}
+
+typeText(currentText.text, typingSpeed);
+
+function updateBannerText() {
+  resetCursorPosition();
+  setTimeout(
+    (a, b) => {
+      typeText(a, b);
+    },
+    hideMS,
+    currentText.text,
+    typingSpeed
+  );
+}
+
+window.addEventListener("resize", selectUpdate);
