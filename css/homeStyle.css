@@ -1,8 +1,9 @@
 :root {
   --button-border-radius: 30px;
   --button-background-color: rgb(122, 157, 223);
-  --button-hover-color: rgb(77, 153, 255);
-  --banner-font-size: 50px;
+  --button-hover-color: rgb(61, 145, 255);
+  --banner-font-size: 60px;
+  --img-swap-duration: 500ms; /*Banner slide fadein/fadeout duration*/
 }
 
 body {
@@ -28,6 +29,7 @@ header {
   left: 20px;
   transform: translateY(-50%);
   height: fit-content;
+  font-family: "Annapurna SIL", serif;
 }
 
 header h1 {
@@ -63,7 +65,7 @@ nav section {
 }
 
 div.navLink {
-  width: 120px;
+  width: 150px;
   height: 60px;
   background-color: var(--button-background-color);
   color: white;
@@ -74,7 +76,7 @@ div.navLink {
   transform: translateY(-50%);
   transition: background-color 200ms ease;
 
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Protest Riot", sans-serif;
   font-size: 20px;
   text-align: center;
 }
@@ -87,6 +89,7 @@ div.navLink {
   left: 50%;
   top: 50%;
   transform: translateX(-50%) translateY(-50%);
+  user-select: none;
 }
 
 .navLink:hover {
@@ -103,21 +106,29 @@ div.navLink {
 }
 
 #fixedBannerText {
+  font-family: "Miriam Libre", sans-serif;
   font-size: 30px;
   font-weight: 700;
   color: rgb(79, 101, 119);
 }
 
-#banner {
-  display: block;
-  width: 70%;
-  min-width: 500px;
-  min-height: calc(100vh - 200px);
-  height: fit-content;
+#bannerContainer {
+  height: 500px;
+  width: calc(100vw - 200px);
+  margin-top: 50px;
+  margin-bottom: 50px;
   position: relative;
-  top: 50px;
   left: 50%;
   transform: translateX(-50%);
+
+  display: grid;
+  grid-template-columns: auto 500px;
+  gap: 20px;
+}
+
+#banner {
+  display: block;
+  height: 100%;
   font-size: var(--banner-font-size);
   font-family: Arial, Helvetica, sans-serif;
   user-select: none;
@@ -127,16 +138,19 @@ div.navLink {
   display: inline-block;
   margin: 0px;
   padding: 0px;
+
+  font-family: "Miriam Libre", sans-serif;
+  font-weight: 700;
 }
 
 .typing-animation {
   opacity: 0;
-  animation: fadeIn 50ms ease-out forwards;
+  animation: fadeIn 30ms ease-out forwards;
 }
 
 .delete-animation {
   opacity: 1;
-  animation: fadeOut 50ms ease-out forwards;
+  animation: fadeOut 30ms ease-out forwards;
 }
 
 @keyframes fadeIn {
@@ -183,4 +197,56 @@ div.navLink {
   to {
     opacity: 0;
   }
+}
+
+#bannerImage img {
+  width: 100%;
+  animation-duration: var(--img-swap-duration);
+  animation-timing-function: ease;
+  animation-fill-mode: forwards;
+}
+
+#socials {
+  width: fit-content;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin: auto;
+  min-width: 500px;
+  display: grid;
+  grid-template-columns: repeat(5, auto);
+  justify-items: center;
+}
+
+.socialMedia {
+  width: 64px;
+  height: 64px;
+  background-color: white;
+  border-width: 3px;
+  border-style: solid;
+  border-color: rgb(200, 200, 200);
+  transition: background-color 200ms ease-in-out, border-color 200ms ease-in-out;
+  border-radius: 35px;
+}
+
+.socialMedia:hover {
+  background-color: rgb(220, 220, 220);
+}
+
+.socialMedia img {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  height: 50%;
+  width: 50%;
+  user-select: none;
+  pointer-events: none;
+}
+
+#placeholder2 {
+  /*temporary*/
+  height: 500px;
+  background-color: grey;
 }
