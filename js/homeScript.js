@@ -3,7 +3,18 @@ const anim = document.getElementById("mainAnim");
 const cursorElement = document.getElementById("text-cursor");
 cursorElement.classList.add("animatedCursor");
 const bannerImageContainer = document.getElementById("bannerImage");
+const teamContainer = document.getElementById("teamContainer");
 
+//team member arrays
+const allTeamMembers = [];
+
+const EDU_IT = [];
+const CONTENT = [];
+const ORG_SPONS = [];
+const SOC_MEDIA = [];
+const NO_SUBTEAM = [];
+
+const teamMembers = teamContainer.children;
 const bannerFontSize = 60; //manually set this when changing banner font size in css
 
 const typingSpeed = 100;
@@ -31,6 +42,55 @@ let imageCircularIndex = 0;
 
 let typingStop = 0;
 let noBannerText = true;
+
+//a helper method that creates compatible objects to represent members
+function createMember(
+  NameSurname = "İsim Soyisim",
+  Status = "Ekip",
+  imageFileName = "user.png"
+) {
+  let ID;
+  switch (Status) {
+    case "Eğitim/IT Ekibi":
+      ID = 0;
+      break;
+    case "İçerik Ekibi":
+      ID = 1;
+      break;
+    case "Organizasyon ve Sponsorluk Ekibi":
+      ID = 2;
+      break;
+    case "Sosyal Medya Ekibi":
+      ID = 3;
+      break;
+    default:
+      ID = 4;
+  }
+  return {
+    imgSrc: "images/" + imageFileName,
+    NameSurname: NameSurname,
+    Status: Status,
+    teamID: ID,
+  };
+}
+
+//WRITE IN REVERSE ORDER UNTIL SOMEONE FINDS A FIX
+const allTeamMemberTemplates = [
+  createMember("Aksel Uğur", "Eğitim/IT Ekibi"),
+  createMember("İlker Çınar", "Eğitim/IT Ekibi"),
+  createMember("Nur Şahin", "Eğitim/IT Ekibi"),
+  createMember("Bahri Efe Özkök", "Eğitim/IT Ekibi"),
+  createMember("Eda Mine Topkara", "İçerik Ekibi"),
+  createMember("Yaprak Müstecaplıoğlu", "İçerik Ekibi"),
+  createMember("Mustafa Kaan Zengin", "İçerik Ekibi"),
+  createMember("Duygu Özlü", "İçerik Ekibi"),
+  createMember("Gülpembe Dağaşan", "Organizasyon ve Sponsorluk Ekibi"),
+  createMember("Özgenur Şensoy", "Organizasyon ve Sponsorluk Ekibi"),
+  createMember("Yusuf Sami", "Organizasyon ve Sponsorluk Ekibi"),
+  createMember("Tuba Sinem Dinç", "Sosyal Medya Ekibi"),
+  createMember("Ayşe Melis Özbek", "Sosyal Medya Ekibi"),
+  createMember("Buse Su Buren", "İçerik Ekibi & Sosyal Medya Ekibi"),
+];
 
 function typeText(stringInput, speed) {
   let currentCharIndex = 0;
@@ -119,9 +179,6 @@ function resetCursorPosition() {
   cursorElement.style.left = "0px";
 }
 
-typeText(currentText.text, typingSpeed);
-changeBannerImage(imageURLs[imageCircularIndex++ % imageURLs.length]);
-
 function updateBannerText() {
   resetCursorPosition();
   changeBannerImage(imageURLs[imageCircularIndex++ % imageURLs.length]);
@@ -160,3 +217,67 @@ function changeBannerImage(imageFileName) {
 }
 
 //changeBannerImage(fileNameAndExtension) for changing banner image
+
+function addTeamMembers() {
+  //adds team members given in an array of objects like:
+  //memberArray = [{imgSrc:"images/BahriEfe.png",NameSurname:"Bahri Efe Özkök",Status:"Eğitim/IT Ekibi"}];
+  for (let member of allTeamMemberTemplates) {
+    const container = document.createElement("div");
+    container.classList.add("teamMember");
+    const mImage = new Image(128, 128);
+    mImage.src = member.imgSrc || "images/user.png";
+
+    container.appendChild(mImage);
+
+    const p1 = document.createElement("p");
+    p1.classList.add("memberName");
+    const p2 = document.createElement("p");
+    p2.classList.add("memberStatus");
+
+    const p1t = document.createTextNode(member.NameSurname);
+    const p2t = document.createTextNode(member.Status);
+
+    p1.appendChild(p1t);
+    p2.appendChild(p2t);
+
+    container.appendChild(p1);
+    container.appendChild(p2);
+
+    allTeamMembers.push(container);
+    switch (member.teamID) {
+      case 0:
+        EDU_IT.push(container);
+        break;
+      case 1:
+        CONTENT.push(container);
+        break;
+      case 2:
+        ORG_SPONS.push(container);
+        break;
+      case 3:
+        SOC_MEDIA.push(container);
+        break;
+      case 4:
+      default:
+        NO_SUBTEAM.push(container);
+    }
+  }
+
+  [EDU_IT, CONTENT, ORG_SPONS, SOC_MEDIA, NO_SUBTEAM].forEach((arr) => {
+    const subContainer = document.createElement("div");
+    subContainer.classList.add("subTeam");
+    arr.forEach((member) => {
+      subContainer.appendChild(member);
+    });
+    teamContainer.appendChild(subContainer);
+  });
+}
+
+function init() {
+  typeText(currentText.text, typingSpeed);
+  changeBannerImage(imageURLs[imageCircularIndex++ % imageURLs.length]);
+
+  addTeamMembers();
+}
+
+init();
