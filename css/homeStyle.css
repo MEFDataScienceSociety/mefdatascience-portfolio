@@ -212,9 +212,10 @@ div.decoLine {
   background-color: rgb(100, 100, 100);
   width: 80%;
   margin: auto;
+  margin-top: 80px;
 }
 
-#TeamTitle {
+.sectionTitle {
   font-family: "Annapurna SIL", serif;
   font-size: 40px;
   position: relative;
@@ -227,6 +228,19 @@ div.decoLine {
   width: fit-content;
   margin: 0px;
   user-select: none;
+}
+
+#About {
+  width: 80%;
+  margin: auto;
+  margin-bottom: 80px;
+  height: fit-content;
+  font-family: "Miriam Libre", sans-serif;
+  font-weight: 700;
+  font-size: 30px;
+  display: grid;
+  gap: 50px;
+  grid-template-columns: 1fr 1fr;
 }
 
 div#teamBG {
@@ -257,10 +271,11 @@ div#teamBG {
   grid-template-columns: repeat(5, min-content);
 
   overflow: hidden;
+  pointer-events: none;
 }
 
 #teamContainer div.subTeam {
-  animation: TeamScroll 5s ease-in-out alternate infinite;
+  animation: TeamScroll 15s ease-in-out alternate infinite;
   display: flex;
   flex-direction: row;
 }
@@ -312,10 +327,38 @@ div#teamBG {
   color: rgb(100, 100, 100);
 }
 
+#galleryContainer {
+  width: 80%;
+  height: min-content;
+  padding: 20px;
+  margin: auto;
+}
+
+#gallery {
+  border: 2px solid;
+  border-radius: 10px;
+  min-height: 50px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(3, auto);
+}
+
+#gallery img {
+  width: 100%;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: scale 0.2s ease-in-out;
+}
+
+footer .sectionTitle {
+  font-family: "Protest Riot", sans-serif;
+  font-weight: 300;
+}
+
 #socials {
   width: fit-content;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding-bottom: 40px;
   margin: auto;
   min-width: 500px;
   display: grid;
