@@ -1,109 +1,7 @@
 :root {
-  --button-border-radius: 30px;
-  --button-background-color: rgb(122, 157, 223);
-  --button-hover-color: rgb(61, 145, 255);
   --banner-font-size: 50px;
   --img-swap-duration: 500ms; /*Banner slide fadein/fadeout duration*/
   --member-count: 14;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-}
-
-a {
-  text-decoration: none;
-}
-
-header {
-  background-color: rgb(0, 42, 66);
-  width: 100%;
-  height: fit-content;
-  display: grid;
-  grid-template-columns: min-content max-content auto;
-}
-
-#Title {
-  position: relative;
-  top: 50%;
-  left: 20px;
-  transform: translateY(-50%);
-  height: fit-content;
-  font-family: "Annapurna SIL", serif;
-}
-
-header h1 {
-  color: white;
-  font-size: 40px;
-  width: fit-content;
-  height: fit-content;
-  user-select: none;
-}
-
-#logo {
-  width: fit-content;
-}
-
-#logo img {
-  height: 100px;
-}
-
-header nav {
-  display: grid;
-  grid-template-columns: auto repeat(4, min-content);
-}
-
-#placeholder {
-  /*placeholder*/
-  height: 100%;
-  grid-column: 1;
-}
-
-nav section {
-  min-width: 120px;
-  width: fit-content;
-}
-
-div.navLink {
-  width: 150px;
-  height: 60px;
-  background-color: var(--button-background-color);
-  color: white;
-  border-radius: var(--button-border-radius);
-  margin: 0px 20px 0px 0px;
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%);
-  transition: background-color 200ms ease;
-
-  font-family: "Protest Riot", sans-serif;
-  font-size: 20px;
-  text-align: center;
-}
-
-.navLink span {
-  display: block;
-  width: fit-content;
-  height: fit-content;
-  position: relative;
-  left: 50%;
-  top: 50%;
-  transform: translateX(-50%) translateY(-50%);
-  user-select: none;
-}
-
-.navLink:hover {
-  background-color: var(--button-hover-color);
-}
-
-#specialNavLink {
-  background-color: rgb(61, 79, 151);
-  color: white;
-}
-
-#specialNavLink:hover {
-  background-color: rgb(43, 45, 134);
 }
 
 #fixedBannerText {
@@ -205,29 +103,6 @@ div.navLink {
   animation-duration: var(--img-swap-duration);
   animation-timing-function: ease;
   animation-fill-mode: forwards;
-}
-
-div.decoLine {
-  height: 2px;
-  background-color: rgb(100, 100, 100);
-  width: 80%;
-  margin: auto;
-  margin-top: 80px;
-}
-
-.sectionTitle {
-  font-family: "Annapurna SIL", serif;
-  font-size: 40px;
-  position: relative;
-  left: 50%;
-  top: -30px;
-  transform: translateX(-50%);
-  background-color: white;
-  padding-left: 10px;
-  padding-right: 10px;
-  width: fit-content;
-  margin: 0px;
-  user-select: none;
 }
 
 #About {
@@ -351,45 +226,35 @@ div#teamBG {
   transition: scale 0.2s ease-in-out;
 }
 
-footer .sectionTitle {
-  font-family: "Protest Riot", sans-serif;
-  font-weight: 300;
-}
-
-#socials {
-  width: fit-content;
-  padding-bottom: 40px;
-  margin: auto;
-  min-width: 500px;
+#LocationInfo {
+  padding: 10px;
   display: grid;
-  grid-template-columns: repeat(5, auto);
-  justify-items: center;
+  grid-template-rows: min-content min-content auto;
+  gap: 20px;
 }
 
-.socialMedia {
-  width: 64px;
-  height: 64px;
-  background-color: white;
-  border-width: 3px;
-  border-style: solid;
-  border-color: rgb(200, 200, 200);
-  transition: background-color 200ms ease-in-out, border-color 200ms ease-in-out;
-  border-radius: 35px;
+#LocationInfo img {
+  height: 32px;
 }
 
-.socialMedia:hover {
-  background-color: rgb(220, 220, 220);
+#LocationInfo p {
+  margin: 0px;
+  font-family: "Miriam Libre", sans-serif;
+  font-weight: 500;
+  font-size: 24px;
 }
 
-.socialMedia img {
-  margin: 0;
-  padding: 0;
+#LocationInfo div {
+  width: fit-content;
   position: relative;
-  top: 50%;
+  left: 30%;
+  display: grid;
+  grid-template-columns: min-content auto min-content;
+  gap: 40px;
+}
+
+#LocationInfo iframe {
+  position: relative;
   left: 50%;
-  transform: translateX(-50%) translateY(-50%);
-  height: 50%;
-  width: 50%;
-  user-select: none;
-  pointer-events: none;
+  transform: translateX(-50%);
 }
