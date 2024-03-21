@@ -112,7 +112,7 @@
   height: fit-content;
   font-family: "Miriam Libre", sans-serif;
   font-weight: 700;
-  font-size: 30px;
+  font-size: 20px;
   display: grid;
   gap: 50px;
   grid-template-columns: 1fr 1fr;
@@ -213,17 +213,29 @@ div#teamBG {
   border: 2px solid;
   border-radius: 10px;
   min-height: 50px;
+  background-color: rgb(220, 220, 220);
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(3, auto);
+  gap: 5px;
 }
 
 #gallery img {
   width: 100%;
+  border-radius: 8px;
   position: relative;
-  top: 50%;
   transform: translateY(-50%);
-  transition: scale 0.2s ease-in-out;
+  top: 50%;
+  transition: transform 0.2s ease-in;
+}
+
+#gallery img:hover {
+  z-index: 5;
+  transform: translateY(-50%) scaleX(120%) scaleY(120%);
+}
+
+#gallery:hover img:not(:hover) {
+  transform: translateY(-50%) scaleX(90%) scaleY(90%);
 }
 
 #LocationInfo {
@@ -247,7 +259,8 @@ div#teamBG {
 #LocationInfo div {
   width: fit-content;
   position: relative;
-  left: 30%;
+  left: 50%;
+  transform: translateX(-50%);
   display: grid;
   grid-template-columns: min-content auto min-content;
   gap: 40px;
