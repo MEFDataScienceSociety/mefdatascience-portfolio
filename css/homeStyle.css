@@ -1,36 +1,37 @@
 :root {
-  --banner-font-size: 50px;
   --img-swap-duration: 500ms; /*Banner slide fadein/fadeout duration*/
   --member-count: 14;
 }
 
 #fixedBannerText {
   font-family: "Miriam Libre", sans-serif;
-  font-size: 30px;
+  font-size: calc(var(--banner-font-size) * 0.6);
   font-weight: 700;
   color: rgb(79, 101, 119);
 }
 
 #bannerContainer {
-  height: 400px;
-  width: calc(100vw - 200px);
+  height: fit-content;
+  width: 80%;
   margin-top: 50px;
-  margin-bottom: 50px;
+  margin-bottom: 150px;
   position: relative;
   left: 50%;
   transform: translateX(-50%);
+  background-color: rgba(255, 255, 255, 0.6);
 
   display: grid;
-  grid-template-columns: auto 400px;
-  gap: 20px;
 }
 
 #banner {
   display: block;
-  height: 100%;
+  height: fit-content;
   font-size: var(--banner-font-size);
-  font-family: Arial, Helvetica, sans-serif;
   user-select: none;
+  grid-area: 1/1/2/2;
+  z-index: 3;
+  color: black;
+  background-color: rgba(255, 255, 255, 0.8);
 }
 
 #mainAnim {
@@ -98,8 +99,22 @@
   }
 }
 
+#bannerImage {
+  height: 300px;
+  grid-area: 1/1/2/2;
+  z-index: 2;
+  background-color: black;
+}
+
 #bannerImage img {
-  width: 100%;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+
+  max-height: 100%;
+  width: auto;
+
   animation-duration: var(--img-swap-duration);
   animation-timing-function: ease;
   animation-fill-mode: forwards;
@@ -114,12 +129,18 @@
   font-weight: 700;
   font-size: 20px;
   display: grid;
-  gap: 50px;
-  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  grid-template-columns: auto;
+  grid-template-rows: 1fr 1fr;
 }
 
-div#teamBG {
-  width: 1000px;
+#About p {
+  margin: 0;
+  padding: 0;
+}
+
+#teamBG {
+  width: 100%;
   height: 300px;
 
   position: absolute;
@@ -130,20 +151,23 @@ div#teamBG {
   background: linear-gradient(
     to right,
     rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 1) 10%,
     transparent 15%,
     transparent 85%,
+    rgba(255, 255, 255, 1) 90%,
     rgba(255, 255, 255, 1) 100%
   );
 }
 
 #teamContainer {
-  width: 1000px;
+  width: 90%;
   height: 300px;
   margin: auto;
   margin-bottom: 50px;
 
   display: grid;
   grid-template-columns: repeat(5, min-content);
+  grid-auto-columns: min-content min-content;
 
   overflow: hidden;
   pointer-events: none;
@@ -178,10 +202,12 @@ div#teamBG {
 
 @keyframes TeamScroll {
   from {
-    transform: translateX(100px);
+    transform: translateX(calc(50vw - 95px));
   }
   to {
-    transform: translateX(calc(-200px * (var(--member-count) - 1) + 800px));
+    transform: translateX(
+      calc(-200px * (var(--member-count) - 1) + 50vw - 95px)
+    );
   }
 }
 
@@ -215,8 +241,7 @@ div#teamBG {
   min-height: 50px;
   background-color: rgb(220, 220, 220);
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: repeat(3, auto);
+  grid-template-columns: auto;
   gap: 5px;
 }
 
@@ -270,4 +295,68 @@ div#teamBG {
   position: relative;
   left: 50%;
   transform: translateX(-50%);
+}
+@media only screen and (min-width: 500px) and (max-width: 800px) {
+  #gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media only screen and (min-width: 800px) and (max-width: 1000px) {
+  #gallery {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  :root {
+    --banner-font-size: 30px;
+  }
+  #banner {
+    background-color: rgba(255, 255, 255, 0.8);
+  }
+}
+
+@media only screen and (min-width: 800px) {
+  :root {
+    --banner-font-size: 50px;
+  }
+  #bannerImage {
+    height: 400px;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  #banner {
+    background-color: transparent;
+    height: 100%;
+  }
+
+  #bannerImage img {
+    max-height: 100%;
+    width: 100%;
+  }
+  #bannerContainer {
+    grid-template-columns: auto 400px;
+  }
+  #bannerImage {
+    grid-area: 1/2;
+  }
+  #About {
+    gap: 50px;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+  }
+  #teamContainer {
+    width: 80%;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  #gallery {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  #galleryContainer {
+    width: 800px;
+  }
 }

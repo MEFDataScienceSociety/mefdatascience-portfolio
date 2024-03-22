@@ -18,23 +18,26 @@ header {
   width: 100%;
   height: fit-content;
   display: grid;
-  grid-template-columns: min-content max-content auto;
+  grid-template-columns: min-content max-content;
+  grid-template-rows: auto auto;
 }
 
 #Title {
   position: relative;
   top: 50%;
-  left: 20px;
+  left: 10px;
   transform: translateY(-50%);
+  grid-column: 2;
+  grid-row: 1;
   height: fit-content;
-  font-family: "Annapurna SIL", serif;
 }
 
 header h1 {
   color: white;
-  font-size: 40px;
   width: fit-content;
   height: fit-content;
+  font-family: "Annapurna SIL", serif;
+  font-size: 30px;
   user-select: none;
 }
 
@@ -43,39 +46,39 @@ header h1 {
 }
 
 #logo img {
-  height: 100px;
+  height: 80px;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 header nav {
   display: grid;
-  grid-template-columns: auto repeat(4, min-content);
+  grid-row: 2;
+  grid-column: span 3;
+  grid-template-columns: auto repeat(4, min-content) auto;
 }
 
 #placeholder {
   /*placeholder*/
   height: 100%;
-  grid-column: 1;
-}
-
-nav section {
-  min-width: 120px;
-  width: fit-content;
 }
 
 div.navLink {
-  width: 150px;
+  width: 100px;
   height: 60px;
   background-color: var(--button-background-color);
   color: white;
   border-radius: var(--button-border-radius);
-  margin: 0px 20px 0px 0px;
+  margin: 10px;
+  margin-top: 0px;
   position: relative;
   top: 50%;
   transform: translateY(-50%);
   transition: background-color 200ms ease;
 
   font-family: "Protest Riot", sans-serif;
-  font-size: 20px;
+  font-size: 15px;
   text-align: center;
 }
 
@@ -170,4 +173,45 @@ footer .sectionTitle {
   width: 50%;
   user-select: none;
   pointer-events: none;
+}
+
+@media only screen and (min-width: 900px) and (max-width: 1250px) {
+  header {
+    grid-template-columns: min-content max-content auto min-content;
+  }
+
+  header nav {
+    grid-template-columns: auto repeat(4, min-content);
+    grid-row: 1;
+    grid-column: 3;
+  }
+}
+
+@media only screen and (min-width: 1250px) {
+  header {
+    grid-template-columns: min-content max-content auto min-content;
+  }
+
+  #Title {
+    left: 20px;
+  }
+
+  header h1 {
+    font-size: 40px;
+  }
+
+  header nav {
+    grid-template-columns: auto repeat(4, min-content);
+    grid-row: 1;
+    grid-column: 3;
+  }
+
+  div.navLink {
+    font-size: 20px;
+    width: 150px;
+  }
+
+  #logo img {
+    height: 100px;
+  }
 }

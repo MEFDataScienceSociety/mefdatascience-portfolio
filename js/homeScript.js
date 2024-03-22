@@ -206,8 +206,8 @@ function changeBannerImage(imageFileName) {
   if (bannerImageContainer.firstChild) {
     const currentImage = bannerImageContainer.firstChild;
     currentImage.style.animationName = "fadeOut";
-    currentImage.addEventListener("animationend", () => {
-      bannerImageContainer.innerHTML = "";
+    currentImage.addEventListener("animationend", function () {
+      bannerImageContainer.removeChild(this);
       appendNewImage();
     });
   } else {
