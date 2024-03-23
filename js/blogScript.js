@@ -3,17 +3,18 @@ const blogContainer = document.getElementById("blogPosts");
 function addPost(
   title,
   summary,
-  link = "#",
-  imagePath = "/images/Logo-full.jpg"
+  fullPagePath,
+  thumbnailName = "Logo-full.jpg"
 ) {
   const linkElement = document.createElement("a");
-  linkElement.setAttribute("href", link);
+  if (fullPageName) linkElement.setAttribute("href", fullPagePath);
+  else linkElement.setAttribute("href", "#");
 
   const postContainer = document.createElement("div");
   postContainer.classList.add("blogPost");
 
   const postImg = new Image(200, 200);
-  postImg.src = imagePath;
+  postImg.src = "../images/" + thumbnailName;
 
   postContainer.appendChild(postImg);
 
