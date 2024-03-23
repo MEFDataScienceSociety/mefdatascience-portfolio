@@ -12,8 +12,8 @@
 
 #bannerContainer {
   height: fit-content;
-  width: 80%;
-  margin-top: 80px;
+  width: 90vw;
+  margin-top: 25px;
   margin-bottom: 50px;
   position: relative;
   left: 50%;
@@ -266,21 +266,22 @@
 }
 
 #LocationInfo {
-  padding: 10px;
+  padding: 0;
   display: grid;
-  grid-template-rows: min-content min-content auto;
+  grid-template-rows: max-content max-content auto;
   gap: 20px;
 }
 
 #LocationInfo img {
   height: 32px;
+  width: 32px;
 }
 
 #LocationInfo p {
   margin: 0px;
   font-family: "Miriam Libre", sans-serif;
   font-weight: 500;
-  font-size: 24px;
+  font-size: 16px;
 }
 
 #LocationInfo div {
@@ -290,7 +291,7 @@
   transform: translateX(-50%);
   display: grid;
   grid-template-columns: min-content auto min-content;
-  gap: 40px;
+  gap: 5px;
 }
 
 #LocationInfo iframe {
@@ -298,6 +299,12 @@
   left: 50%;
   transform: translateX(-50%);
 }
+@media only screen and (max-width: 800px) {
+  #LocationInfo iframe {
+    width: 90vw;
+  }
+}
+
 @media only screen and (min-width: 500px) and (max-width: 800px) {
   #gallery {
     grid-template-columns: repeat(2, 1fr);
@@ -322,6 +329,13 @@
 @media only screen and (min-width: 800px) {
   #bannerImage {
     height: 400px;
+  }
+  #LocationInfo p {
+    font-size: 24px;
+  }
+  #bannerContainer {
+    width: 80%;
+    margin-top: 80px;
   }
 }
 
@@ -352,9 +366,6 @@
   #teamContainer {
     width: 80%;
   }
-}
-
-@media only screen and (min-width: 1000px) {
   #gallery {
     grid-template-columns: repeat(4, 1fr);
   }

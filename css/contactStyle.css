@@ -1,5 +1,4 @@
 #LocationInfo {
-  padding: 10px;
   display: grid;
   grid-template-rows: min-content min-content auto;
   gap: 20px;
@@ -7,6 +6,7 @@
 
 #LocationInfo img {
   height: 32px;
+  width: 32px;
 }
 
 #LocationInfo p {
@@ -23,11 +23,20 @@
   transform: translateX(-50%);
   display: grid;
   grid-template-columns: min-content auto min-content;
-  gap: 40px;
+  gap: 5px;
 }
 
 #LocationInfo iframe {
   position: relative;
   left: 50%;
   transform: translateX(-50%);
+}
+
+@media only screen and (max-width: 800px) {
+  #LocationInfo iframe {
+    width: 90vw;
+  }
+  #LocationInfo p {
+    font-size: 16px;
+  }
 }

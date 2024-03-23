@@ -13,20 +13,9 @@ a {
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
   width: fit-content;
+  height: max-content;
   font-family: "Annapurna SIL", serif;
-  font-size: 80px;
-}
-
-#sortAndFilter div {
-  display: grid;
-  grid-template-columns: auto 120px 120px 250px;
-}
-
-.sfButton {
-  padding: 5px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  margin: 10px;
+  font-size: 30px;
 }
 
 #deco2 {
@@ -35,7 +24,8 @@ a {
 }
 
 #blogPosts {
-  width: 80%;
+  width: 90%;
+  max-width: 1250px;
   margin: auto;
   min-height: 500px;
   display: grid;
@@ -45,24 +35,33 @@ a {
 }
 
 .blogPost {
-  border: 1px solid;
+  border: 1px solid black;
+  box-shadow: 2px 2px 2px rgb(90, 90, 90);
+  border-radius: 10px;
+  height: 100%;
+  overflow: hidden;
   display: grid;
-  grid-template-columns: 200px auto;
+  grid-template-columns: auto auto;
 }
 
 .blogPost img {
-  max-height: 100%;
   max-width: 200px;
+  min-width: 80px;
+  width: 20vw;
+  height: auto;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .post {
-  width: calc(100% - 100px);
+  height: fit-content;
 }
 
 .postTitle {
   font-family: "Miriam Libre", sans-serif;
-  font-size: 30px;
-  margin: 20px;
+  font-size: 25px;
+  margin: 10px;
   margin-bottom: 0px;
   width: fit-content;
   color: black;
@@ -70,8 +69,47 @@ a {
 
 .summary {
   font-family: "Miriam Libre", sans-serif;
-  font-size: 20px;
-  margin: 20px;
-  margin-top: 10px;
+  font-size: 15px;
+  margin: 10px;
   color: rgb(50, 50, 50);
+}
+
+@media only screen and (min-width: 530px) and (max-width: 786px) {
+  #blogBanner {
+    font-size: 50px;
+  }
+}
+
+@media only screen and (min-width: 786px) and (max-width: 920px) {
+  #blogBanner {
+    font-size: 60px;
+  }
+  .postTitle {
+    font-size: 30px;
+  }
+  .summary {
+    font-size: 20px;
+  }
+  #blogPosts {
+    width: 80%;
+  }
+}
+
+@media only screen and (min-width: 920px) {
+  #blogBanner {
+    font-size: 80px;
+  }
+  .blogPost img {
+    max-height: 100%;
+    max-width: 200px;
+  }
+  .postTitle {
+    font-size: 40px;
+  }
+  .summary {
+    font-size: 30px;
+  }
+  #blogPosts {
+    width: 80%;
+  }
 }
