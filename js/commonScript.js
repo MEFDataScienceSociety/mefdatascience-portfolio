@@ -17,13 +17,13 @@ function navToggle() {
 }
 
 function resizeUpdate() {
-  if (window.innerWidth < 900 && navButtonDisabled) {
+  if (window.innerWidth < 920 && navButtonDisabled) {
     navButtonDisabled = false;
     toggleButton.classList.remove("invis");
     navElement.classList.remove("enabled");
   }
   //window width 900px isn't considered on purpose.
-  else if (window.innerWidth > 900 && !navButtonDisabled) {
+  else if (window.innerWidth > 920 && !navButtonDisabled) {
     toggleButton.classList.add("invis");
     navButtonDisabled = true;
     navElement.classList.add("enabled");
