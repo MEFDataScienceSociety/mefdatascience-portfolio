@@ -3,12 +3,11 @@ const blogContainer = document.getElementById("blogPosts");
 function addPost(
   title,
   summary,
-  fullPageName,
+  fullPagePath,
   thumbnailName = "Logo-full.jpg"
 ) {
   const linkElement = document.createElement("a");
-  if (fullPageName)
-    linkElement.setAttribute("href", "../blogPages/" + fullPageName);
+  if (fullPageName) linkElement.setAttribute("href", fullPagePath);
   else linkElement.setAttribute("href", "#");
 
   const postContainer = document.createElement("div");
