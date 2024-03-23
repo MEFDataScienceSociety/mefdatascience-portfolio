@@ -74,7 +74,6 @@ function createMember(
   };
 }
 
-//WRITE IN REVERSE ORDER UNTIL SOMEONE FINDS A FIX
 const allTeamMemberTemplates = [
   createMember("Aksel Uğur", "Eğitim/IT Ekibi"),
   createMember("İlker Çınar", "Eğitim/IT Ekibi"),
@@ -207,8 +206,8 @@ function changeBannerImage(imageFileName) {
   if (bannerImageContainer.firstChild) {
     const currentImage = bannerImageContainer.firstChild;
     currentImage.style.animationName = "fadeOut";
-    currentImage.addEventListener("animationend", () => {
-      bannerImageContainer.innerHTML = "";
+    currentImage.addEventListener("animationend", function () {
+      bannerImageContainer.removeChild(this);
       appendNewImage();
     });
   } else {
@@ -219,8 +218,6 @@ function changeBannerImage(imageFileName) {
 //changeBannerImage(fileNameAndExtension) for changing banner image
 
 function addTeamMembers() {
-  //adds team members given in an array of objects like:
-  //memberArray = [{imgSrc:"images/BahriEfe.png",NameSurname:"Bahri Efe Özkök",Status:"Eğitim/IT Ekibi"}];
   for (let member of allTeamMemberTemplates) {
     const container = document.createElement("div");
     container.classList.add("teamMember");

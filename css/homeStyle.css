@@ -1,138 +1,37 @@
 :root {
-  --button-border-radius: 30px;
-  --button-background-color: rgb(122, 157, 223);
-  --button-hover-color: rgb(61, 145, 255);
-  --banner-font-size: 50px;
   --img-swap-duration: 500ms; /*Banner slide fadein/fadeout duration*/
   --member-count: 14;
 }
 
-body {
-  margin: 0;
-  padding: 0;
-}
-
-a {
-  text-decoration: none;
-}
-
-header {
-  background-color: rgb(0, 42, 66);
-  width: 100%;
-  height: fit-content;
-  display: grid;
-  grid-template-columns: min-content max-content auto;
-}
-
-#Title {
-  position: relative;
-  top: 50%;
-  left: 20px;
-  transform: translateY(-50%);
-  height: fit-content;
-  font-family: "Annapurna SIL", serif;
-}
-
-header h1 {
-  color: white;
-  font-size: 40px;
-  width: fit-content;
-  height: fit-content;
-  user-select: none;
-}
-
-#logo {
-  width: fit-content;
-}
-
-#logo img {
-  height: 100px;
-}
-
-header nav {
-  display: grid;
-  grid-template-columns: auto repeat(4, min-content);
-}
-
-#placeholder {
-  /*placeholder*/
-  height: 100%;
-  grid-column: 1;
-}
-
-nav section {
-  min-width: 120px;
-  width: fit-content;
-}
-
-div.navLink {
-  width: 150px;
-  height: 60px;
-  background-color: var(--button-background-color);
-  color: white;
-  border-radius: var(--button-border-radius);
-  margin: 0px 20px 0px 0px;
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%);
-  transition: background-color 200ms ease;
-
-  font-family: "Protest Riot", sans-serif;
-  font-size: 20px;
-  text-align: center;
-}
-
-.navLink span {
-  display: block;
-  width: fit-content;
-  height: fit-content;
-  position: relative;
-  left: 50%;
-  top: 50%;
-  transform: translateX(-50%) translateY(-50%);
-  user-select: none;
-}
-
-.navLink:hover {
-  background-color: var(--button-hover-color);
-}
-
-#specialNavLink {
-  background-color: rgb(61, 79, 151);
-  color: white;
-}
-
-#specialNavLink:hover {
-  background-color: rgb(43, 45, 134);
-}
-
 #fixedBannerText {
   font-family: "Miriam Libre", sans-serif;
-  font-size: 30px;
+  font-size: calc(var(--banner-font-size) * 0.6);
   font-weight: 700;
   color: rgb(79, 101, 119);
 }
 
 #bannerContainer {
-  height: 400px;
-  width: calc(100vw - 200px);
+  height: fit-content;
+  width: 80%;
   margin-top: 50px;
-  margin-bottom: 50px;
+  margin-bottom: 150px;
   position: relative;
   left: 50%;
   transform: translateX(-50%);
+  background-color: rgba(255, 255, 255, 0.6);
 
   display: grid;
-  grid-template-columns: auto 400px;
-  gap: 20px;
 }
 
 #banner {
   display: block;
-  height: 100%;
+  height: fit-content;
   font-size: var(--banner-font-size);
-  font-family: Arial, Helvetica, sans-serif;
   user-select: none;
+  grid-area: 1/1/2/2;
+  z-index: 3;
+  color: black;
+  background-color: rgba(255, 255, 255, 0.8);
 }
 
 #mainAnim {
@@ -200,34 +99,25 @@ div.navLink {
   }
 }
 
+#bannerImage {
+  height: 300px;
+  grid-area: 1/1/2/2;
+  z-index: 2;
+  background-color: black;
+}
+
 #bannerImage img {
-  width: 100%;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+
+  max-height: 100%;
+  width: auto;
+
   animation-duration: var(--img-swap-duration);
   animation-timing-function: ease;
   animation-fill-mode: forwards;
-}
-
-div.decoLine {
-  height: 2px;
-  background-color: rgb(100, 100, 100);
-  width: 80%;
-  margin: auto;
-  margin-top: 80px;
-}
-
-.sectionTitle {
-  font-family: "Annapurna SIL", serif;
-  font-size: 40px;
-  position: relative;
-  left: 50%;
-  top: -30px;
-  transform: translateX(-50%);
-  background-color: white;
-  padding-left: 10px;
-  padding-right: 10px;
-  width: fit-content;
-  margin: 0px;
-  user-select: none;
 }
 
 #About {
@@ -237,14 +127,20 @@ div.decoLine {
   height: fit-content;
   font-family: "Miriam Libre", sans-serif;
   font-weight: 700;
-  font-size: 30px;
+  font-size: 20px;
   display: grid;
-  gap: 50px;
-  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  grid-template-columns: auto;
+  grid-template-rows: 1fr 1fr;
 }
 
-div#teamBG {
-  width: 1000px;
+#About p {
+  margin: 0;
+  padding: 0;
+}
+
+#teamBG {
+  width: 100%;
   height: 300px;
 
   position: absolute;
@@ -255,20 +151,23 @@ div#teamBG {
   background: linear-gradient(
     to right,
     rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 1) 10%,
     transparent 15%,
     transparent 85%,
+    rgba(255, 255, 255, 1) 90%,
     rgba(255, 255, 255, 1) 100%
   );
 }
 
 #teamContainer {
-  width: 1000px;
+  width: 90%;
   height: 300px;
   margin: auto;
   margin-bottom: 50px;
 
   display: grid;
   grid-template-columns: repeat(5, min-content);
+  grid-auto-columns: min-content min-content;
 
   overflow: hidden;
   pointer-events: none;
@@ -303,10 +202,12 @@ div#teamBG {
 
 @keyframes TeamScroll {
   from {
-    transform: translateX(100px);
+    transform: translateX(calc(50vw - 95px));
   }
   to {
-    transform: translateX(calc(-200px * (var(--member-count) - 1) + 800px));
+    transform: translateX(
+      calc(-200px * (var(--member-count) - 1) + 50vw - 95px)
+    );
   }
 }
 
@@ -338,58 +239,124 @@ div#teamBG {
   border: 2px solid;
   border-radius: 10px;
   min-height: 50px;
+  background-color: rgb(220, 220, 220);
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: repeat(3, auto);
+  grid-template-columns: auto;
+  gap: 5px;
 }
 
 #gallery img {
   width: 100%;
+  border-radius: 8px;
   position: relative;
-  top: 50%;
   transform: translateY(-50%);
-  transition: scale 0.2s ease-in-out;
-}
-
-footer .sectionTitle {
-  font-family: "Protest Riot", sans-serif;
-  font-weight: 300;
-}
-
-#socials {
-  width: fit-content;
-  padding-bottom: 40px;
-  margin: auto;
-  min-width: 500px;
-  display: grid;
-  grid-template-columns: repeat(5, auto);
-  justify-items: center;
-}
-
-.socialMedia {
-  width: 64px;
-  height: 64px;
-  background-color: white;
-  border-width: 3px;
-  border-style: solid;
-  border-color: rgb(200, 200, 200);
-  transition: background-color 200ms ease-in-out, border-color 200ms ease-in-out;
-  border-radius: 35px;
-}
-
-.socialMedia:hover {
-  background-color: rgb(220, 220, 220);
-}
-
-.socialMedia img {
-  margin: 0;
-  padding: 0;
-  position: relative;
   top: 50%;
+  transition: transform 0.2s ease-in;
+}
+
+#gallery img:hover {
+  z-index: 5;
+  transform: translateY(-50%) scaleX(120%) scaleY(120%);
+}
+
+#gallery:hover img:not(:hover) {
+  transform: translateY(-50%) scaleX(90%) scaleY(90%);
+}
+
+#LocationInfo {
+  padding: 10px;
+  display: grid;
+  grid-template-rows: min-content min-content auto;
+  gap: 20px;
+}
+
+#LocationInfo img {
+  height: 32px;
+}
+
+#LocationInfo p {
+  margin: 0px;
+  font-family: "Miriam Libre", sans-serif;
+  font-weight: 500;
+  font-size: 24px;
+}
+
+#LocationInfo div {
+  width: fit-content;
+  position: relative;
   left: 50%;
-  transform: translateX(-50%) translateY(-50%);
-  height: 50%;
-  width: 50%;
-  user-select: none;
-  pointer-events: none;
+  transform: translateX(-50%);
+  display: grid;
+  grid-template-columns: min-content auto min-content;
+  gap: 40px;
+}
+
+#LocationInfo iframe {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+@media only screen and (min-width: 500px) and (max-width: 800px) {
+  #gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media only screen and (min-width: 800px) and (max-width: 1000px) {
+  #gallery {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  :root {
+    --banner-font-size: 30px;
+  }
+  #banner {
+    background-color: rgba(255, 255, 255, 0.8);
+  }
+}
+
+@media only screen and (min-width: 800px) {
+  :root {
+    --banner-font-size: 50px;
+  }
+  #bannerImage {
+    height: 400px;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  #banner {
+    background-color: transparent;
+    height: 100%;
+  }
+
+  #bannerImage img {
+    max-height: 100%;
+    width: 100%;
+  }
+  #bannerContainer {
+    grid-template-columns: auto 400px;
+  }
+  #bannerImage {
+    grid-area: 1/2;
+  }
+  #About {
+    gap: 50px;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+  }
+  #teamContainer {
+    width: 80%;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  #gallery {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  #galleryContainer {
+    width: 800px;
+  }
 }
