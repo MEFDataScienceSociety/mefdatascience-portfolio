@@ -16,7 +16,7 @@ function navToggle() {
   }
 }
 
-window.addEventListener("resize", () => {
+function resizeUpdate() {
   if (window.innerWidth < 900 && navButtonDisabled) {
     navButtonDisabled = false;
     toggleButton.classList.remove("invis");
@@ -28,4 +28,10 @@ window.addEventListener("resize", () => {
     navButtonDisabled = true;
     navElement.classList.add("enabled");
   }
+}
+
+window.addEventListener("resize", () => {
+  resizeUpdate();
 });
+
+resizeUpdate();
