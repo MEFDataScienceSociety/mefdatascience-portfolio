@@ -7,7 +7,7 @@ function addPost(
   thumbnailName = "Logo-full.jpg"
 ) {
   const linkElement = document.createElement("a");
-  if (fullPageName) linkElement.setAttribute("href", fullPagePath);
+  if (fullPagePath) linkElement.setAttribute("href", fullPagePath);
   else linkElement.setAttribute("href", "#");
 
   const postContainer = document.createElement("div");
