@@ -18,14 +18,18 @@ header {
   width: 100%;
   height: fit-content;
   display: grid;
-  grid-template-columns: min-content max-content;
-  grid-template-rows: auto auto;
+  grid-template-columns: min-content max-content auto min-content;
+}
+
+header :not(nav) {
+  z-index: 4;
 }
 
 #Title {
   position: relative;
   top: 50%;
-  left: 10px;
+  margin-left: 10px;
+  margin-right: 20px;
   transform: translateY(-50%);
   grid-column: 2;
   grid-row: 1;
@@ -53,28 +57,91 @@ header h1 {
 }
 
 header nav {
-  display: grid;
   grid-row: 2;
-  grid-column: span 3;
-  grid-template-columns: auto repeat(4, min-content) auto;
+  grid-column: span 4;
+
+  position: relative;
+  top: 0;
+  left: 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.3s 0.1s, top 0.4s ease-out;
 }
 
-#placeholder {
-  /*placeholder*/
-  height: 100%;
+#navToggle {
+  grid-row: 1;
+  grid-column: 4;
+  margin-right: 10px;
+  width: 60px;
+  height: 60px;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 3px solid white;
+  border-radius: 15%;
+  background-color: transparent;
+  transition: background-color 0.3s;
+}
+
+#navToggle:hover {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+#navToggle:active {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+div.symbolLine {
+  position: relative;
+  margin: auto;
+  width: 36px;
+  height: 3px;
+  background-color: white;
+  transition: transform 0.3s;
+  transform-origin: center;
+}
+
+.symbolLine:nth-child(odd) {
+  top: -5px;
+}
+
+.symbolLine:nth-child(even) {
+  top: 5px;
+}
+
+.symbolLine.enabled:nth-child(odd).enabled {
+  top: -5px;
+  transform: translateY(6px) rotate(45deg);
+}
+
+.symbolLine.enabled:nth-child(even) {
+  top: 5px;
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+#navToggle.invis {
+  display: none;
+}
+
+#navToggle:not(.invis) + nav:not(.enabled) {
+  transition: none;
+  background-color: transparent;
+  opacity: 0;
+  height: 0;
+  top: -100px;
+  pointer-events: none;
 }
 
 div.navLink {
-  width: 100px;
+  width: 300px;
   height: 60px;
   background-color: var(--button-background-color);
   color: white;
   border-radius: var(--button-border-radius);
   margin: 10px;
-  margin-top: 0px;
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%);
   transition: background-color 200ms ease;
 
   font-family: "Protest Riot", sans-serif;
@@ -181,9 +248,14 @@ footer .sectionTitle {
   }
 
   header nav {
-    grid-template-columns: auto repeat(4, min-content);
+    flex-direction: row;
+    justify-content: flex-end;
     grid-row: 1;
     grid-column: 3;
+  }
+  div.navLink {
+    width: 100px;
+    height: 60px;
   }
 }
 
@@ -201,7 +273,8 @@ footer .sectionTitle {
   }
 
   header nav {
-    grid-template-columns: auto repeat(4, min-content);
+    flex-direction: row;
+    justify-content: flex-end;
     grid-row: 1;
     grid-column: 3;
   }
