@@ -1,0 +1,108 @@
+*{
+    padding: 0;
+    margin: 2px;
+    box-sizing: border-box;
+    font-family: 'Poppins';
+}
+.container1{
+    width: 100%;
+    height: 60vh;
+    background-color: rgba(0,0,0,0.4);
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.content h1{
+    font-size: 95px;
+    color: #fff;
+    margin-bottom: 50px;
+}
+.background-clip{
+    padding: 0;
+    box-sizing: border-box;
+    position: absolute;
+    width: 100%;
+    margin: 2px;
+    z-index: -1;
+}
+.box{
+    height: 30px;
+    color: aqua;
+    background-color: green;
+}
+
+#container2{
+    padding-left: 200px;
+    padding-right: 200px;
+    align-items: center;
+    margin-left: 200px;
+    margin-right: 200px;
+
+    background-color: rgb(123, 160, 191);
+    
+}
+.mailclass{
+    padding: 10px 20px;
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    
+}
+.mapclass{
+    padding: 10px 20px;
+    margin: 10px;
+    display: flex;
+    align-items: center;
+}
+.emailmapText{
+    font-size: 30px;
+    
+}
+.maillokasyoninfo{
+    font-size: 12px;
+    font-style:normal;
+}
+#mailicon{
+    
+    font-size: 50px;
+    margin-right: 20px;
+}
+#mapicon{
+    font-size: 50px;
+    margin-right: 20px;
+}
+.mailcontent{
+    flex-grow: 1;
+}
+.mapcontent{
+    flex-grow: 1;
+}
+
+
+
+.iconContainer{
+    
+    
+    font-size: 50px;
+    
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2px;
+   
+
+}
+.iconContainer i{
+    color: blue;
+}
+.iconContainer i:hover{
+    color: black;
+}
+#copyright{
+    color: rgb(45, 52, 95);
+    text-align: center;
+    
+    
+
+
+}
