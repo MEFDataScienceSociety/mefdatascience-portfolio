@@ -13,14 +13,16 @@
 #bannerContainer {
   height: fit-content;
   width: 80%;
-  margin-top: 50px;
-  margin-bottom: 150px;
+  margin-top: 80px;
+  margin-bottom: 50px;
   position: relative;
   left: 50%;
   transform: translateX(-50%);
   background-color: rgba(255, 255, 255, 0.6);
 
   display: grid;
+  border-radius: 10px;
+  overflow: hidden;
 }
 
 #banner {
@@ -202,11 +204,11 @@
 
 @keyframes TeamScroll {
   from {
-    transform: translateX(calc(50vw - 95px));
+    transform: translateX(calc(50vw - 200px));
   }
   to {
     transform: translateX(
-      calc(-200px * (var(--member-count) - 1) + 50vw - 95px)
+      calc(-200px * (var(--member-count) - 1) + 50vw - 200px)
     );
   }
 }
@@ -313,22 +315,22 @@
     --banner-font-size: 30px;
   }
   #banner {
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 0.6);
   }
 }
 
 @media only screen and (min-width: 800px) {
-  :root {
-    --banner-font-size: 50px;
-  }
   #bannerImage {
     height: 400px;
   }
 }
 
 @media only screen and (min-width: 1000px) {
+  :root {
+    --banner-font-size: 50px;
+  }
   #banner {
-    background-color: transparent;
+    background-color: rgb(230, 230, 230);
     height: 100%;
   }
 
