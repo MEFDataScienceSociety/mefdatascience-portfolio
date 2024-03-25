@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MEF Data Science Society (Admin)</title>
+    <link rel="icon" type="image/x-icon" href="../images/favicon.ico" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Annapurna+SIL:wght@400;700&family=Protest+Riot&family=Miriam+Libre:wght@700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="adminStyle.css" />
+  </head>
+  <body>
+    <header>
+      <div id="logo">
+        <a href="../index.html"
+          ><!--link is temporary-->
+          <img src="../images/logo.png" />
+        </a>
+      </div>
+      <div id="Title"><h1>MEF Data Science Society (Admin)</h1></div>
+    </header>
+
+    <main>
+      <div id="blogContainer">
+        <div id="topBar">
+          <section class="tabSelector">
+            <button id="select1" class="tabSelected" onclick="select1()">
+              <p class="label">Yayınlanmış Gönderiler</p>
+            </button>
+            <button id="select2" onclick="select2()">
+              <p class="label">Yeni Gönderi</p>
+            </button>
+          </section>
+          <section class="pageSelector">
+            <button id="prevPage" disabled>&LT;-</button>
+            <p id="pageNumber">
+              Sayfa
+              <br />
+              1<span>/1</span>
+            </p>
+            <button id="nextPage">-&GT;</button>
+          </section>
+        </div>
+
+        <section id="content">
+          <div id="tab1" class="visible">
+            <div class="postContainer" data-post_id="0">
+              <div class="postSummary">
+                <span class="postTitle">Başlık</span>
+                <br />
+                <p class="postContent">
+                  Özet Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Perspiciatis earum ea corrupti eius repellendus nulla magnam
+                  minus, culpa fuga consequuntur molestiae. Vitae nobis dolore
+                  neque reiciendis at placeat dolor exercitationem!
+                </p>
+              </div>
+              <button class="postLink">Link</button>
+              <div class="postSettings">
+                <button class="edit">Edit</button>
+                <button class="delete">Delete</button>
+              </div>
+            </div>
+          </div>
+          <div id="tab2">
+            <div id="inputEditor">
+              <section class="tabSelector">
+                <button id="inputSelect_text" class="tabSelected">T</button>
+                <button id="inputSelect_image">Image</button>
+                <button id="inputSelect_textFile">txt<br />docx</button>
+              </section>
+              <section id="inputArea">
+                <div id="inputArea_textEditor" class="visible"></div>
+                <div id="inputArea_image"></div>
+                <div id="inputArea_textFile"></div>
+              </section>
+              <section id="input_settings">
+                <div id="is_textEdit" class="visible"></div>
+                <div id="is_imgSettings"></div>
+                <div id="is_textFile"></div>
+              </section>
+            </div>
+            <div id="gridDesigner"></div>
+            <div id="previewContainer"></div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="adminScript.js"></script>
+  </body>
+</html>

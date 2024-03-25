@@ -1,0 +1,293 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: white;
+}
+
+a {
+  text-decoration: none;
+}
+
+header {
+  background-color: rgb(0, 42, 66);
+  width: 100%;
+  height: fit-content;
+  display: grid;
+  grid-template-columns: min-content max-content auto min-content;
+}
+
+#Title {
+  position: relative;
+  top: 50%;
+  margin-left: 10px;
+  margin-right: 20px;
+  transform: translateY(-50%);
+  grid-column: 2;
+  grid-row: 1;
+  height: fit-content;
+}
+
+header h1 {
+  color: white;
+  width: fit-content;
+  height: fit-content;
+  font-family: "Annapurna SIL", serif;
+  font-size: 30px;
+  user-select: none;
+}
+
+#logo {
+  width: fit-content;
+}
+
+#logo img {
+  height: 80px;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+@media only screen and (max-width: 530px) {
+  #Title {
+    width: min-content;
+  }
+}
+
+@media only screen and (min-width: 1250px) {
+  header {
+    grid-template-columns: min-content max-content auto min-content;
+  }
+
+  #Title {
+    left: 20px;
+  }
+
+  header h1 {
+    font-size: 40px;
+  }
+
+  #logo img {
+    height: 100px;
+  }
+}
+
+/*unique css below*/
+
+button {
+  min-width: 20px;
+  min-height: 20px;
+}
+
+#blogContainer {
+  display: grid;
+  grid-template-rows: auto auto;
+  margin: 50px;
+  border: 5px solid black;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+#topBar {
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: end;
+  justify-content: space-between;
+  border-bottom: 3px solid black;
+}
+
+.tabSelector,
+.pageSelector {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 100%;
+  user-select: none;
+}
+
+.tabSelector {
+  background-color: rgb(162, 198, 220);
+  align-items: end;
+}
+
+.tabSelector > * {
+  height: 100%;
+  transition: background-color 0.4s ease;
+  border: none;
+}
+
+.tabSelector .label {
+  padding: 10px;
+  font-family: "Annapurna SIL", serif;
+  font-size: 30px;
+}
+
+.tabSelector .tabSelected {
+  background-color: rgb(105, 176, 216);
+}
+
+.tabSelector > :hover:not(.tabSelected) {
+  background-color: rgb(140, 190, 221);
+}
+
+.tabSelector > .tabSelected:hover {
+  background-color: rgb(140, 190, 221);
+}
+
+.pageSelector {
+  margin-right: 10px;
+  width: fit-content;
+  display: flex;
+  gap: 10px;
+  flex-direction: row;
+}
+.pageSelector button {
+  width: 40px;
+  height: 40px;
+}
+
+#pageNumber {
+  color: black;
+  text-align: center;
+}
+#pageNumber span {
+  color: grey;
+}
+
+#content {
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto;
+}
+
+#content > div {
+  width: 100%;
+  min-height: 300px;
+  height: fit-content;
+  grid-area: 1/1/2/2;
+  transition: opacity 100ms ease-out;
+}
+#content > div:not(.visible) {
+  opacity: 0;
+  height: 300px;
+  pointer-events: none;
+}
+
+#tab1 {
+  display: grid;
+  grid-template-rows: min-content min-content;
+  grid-auto-rows: min-content min-content;
+}
+
+#tab2 {
+  padding: 10px;
+  box-sizing: border-box;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: min-content min-content auto;
+}
+
+#tab2 * {
+  border: 2px solid black;
+}
+
+#inputEditor {
+  width: 400px;
+  height: 500px;
+  display: grid;
+  grid-template-rows: min-content auto min-content;
+}
+
+#inputEditor .tabSelector {
+  display: grid;
+  grid-template-columns: repeat(3, min-content);
+}
+
+#inputEditor .tabSelector > button {
+  padding-left: 30px;
+  padding-right: 30px;
+  min-width: fit-content;
+  min-height: 50px;
+}
+
+#inputArea > div {
+  grid-area: 1/1/2/2;
+  height: 100%;
+  opacity: 0;
+  pointer-events: none;
+}
+
+#inputArea > div.visible {
+  opacity: 1;
+  pointer-events: all;
+}
+
+#input_settings {
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto;
+}
+
+#input_settings > * {
+  grid-area: 1/1/2/2;
+  height: 50px;
+  opacity: 0;
+  pointer-events: none;
+  display: grid;
+  grid-template-columns: min-content min-content;
+  gap: 5px;
+  grid-auto-columns: min-content min-content;
+}
+
+#input_settings > .visible {
+  opacity: 1;
+  pointer-events: all;
+}
+
+#gridDesigner {
+  width: 400px;
+  overflow-y: scroll;
+}
+
+#previewContainer {
+  width: auto;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.postContainer {
+  height: 200px;
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid black;
+  box-shadow: 2px 2px 4px black;
+  border-radius: 10px;
+  display: grid;
+  gap: 15px;
+  grid-template-columns: auto min-content max-content;
+}
+.postLink {
+  width: 50px;
+  height: 50px;
+}
+.postSettings {
+  display: grid;
+  gap: 15px;
+  grid-template-rows: auto auto;
+}
+.postSettings button {
+  width: 100px;
+}
+.postSummary span.postTitle {
+  font-family: "Annapurna SIL", serif;
+  font-size: 30px;
+}
+.postContent {
+  font-family: "Miriam Libre", serif;
+  font-size: 20px;
+}
